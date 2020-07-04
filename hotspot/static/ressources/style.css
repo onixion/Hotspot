@@ -1,0 +1,174 @@
+body {
+	margin:0;
+	padding:0;
+}
+
+#map {
+	position:absolute;
+	top:5em;
+	bottom:0;
+	width:100%;
+}
+
+.container-fluid {
+	padding: 0px;
+}
+
+.navbar-header {
+	display: inline-block;
+	float: left;
+	width: 100%;
+	background-color: #F0F0F0;
+}
+
+.button-filter {
+	float: left;
+	margin-top: 5px;
+	margin-left: 20px;
+	height: 4em;
+}
+
+.navbar-heading {
+	float: none;
+	text-align: center;
+	margin-top: 10px;
+	color: gray;
+}
+
+#wrapper {
+	padding-left: 250px;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+	padding-left: 0;
+}
+
+#sidebar-wrapper {
+	position: fixed;
+	left: 250px;
+	z-index: 1000;
+	overflow-y: auto;
+	margin-left: -250px;
+	width: 250px;
+	height: 100%;
+	background: gray;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+	width: 0;
+}
+
+#page-content-wrapper {
+	padding: 15px;
+	width: 100%;
+}
+
+#wrapper.toggled #page-content-wrapper {
+	position: relative;
+	margin-right: 0;
+}
+
+.sidebar-nav {
+	position: absolute;
+	top: 0;
+	margin: 0;
+	padding: 0;
+	width: 250px;
+	list-style: none;
+}
+
+.sidebar-nav li {
+	text-indent: 20px;
+	line-height: 40px;
+}
+
+.sidebar-nav li a {
+	display: block;
+	color: whitesmoke;
+	text-decoration: none;
+}
+
+.sidebar-nav li a:hover {
+	background: rgba(255, 255, 255, 0.2);
+	color: #fff;
+	text-decoration: none;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+	text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+	height: 65px;
+	font-size: 18px;
+	line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand {
+	color: whitesmoke;
+	margin-left: 30px;
+}
+
+.mapboxgl-popup {
+	max-width: 400px;
+	font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+.btn.btn-square {
+  border-radius: 0;
+}
+
+.modal .modal-body {
+	max-height: 70vh;
+	overflow-y: auto;
+}
+
+@media (max-height: 500px) {
+	.modal .modal-body {
+		max-height: 50vh;
+		overflow-y: auto;
+	}
+}
+
+.mapboxgl-popup-content {
+	box-shadow: 0 0 10px -2px #000000 !important;
+	background-color: #F0F0F0 !important;
+}
+
+
+.all-bg {
+	background-color: #ff0000 !important;
+}
+
+.food-bg {
+	background-color: #00ff00 !important;
+}
+
+.hotel-bg {
+	background-color: #ff9900 !important;
+}
+
+.entertainment-bg {
+	background-color: #ffff00 !important;
+}
+
+.shop-bg {
+	background-color: #cc0066 !important;
+}
+
+.travel-bg {
+	background-color: #0000ff !important;
+}
+
+.disabled {
+	background-color: #ffffff !important;
+}

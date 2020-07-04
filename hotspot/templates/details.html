@@ -1,0 +1,78 @@
+<div id="details" class="modal fade" role="dialog">
+	<script type="text/javascript">$("#details").modal("show");</script>
+
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="row">
+					{% if hotspot.image %}
+					<div class="col-sm-2 text-center">
+						<img src="{{hotspot.image}}" class="img-fluid">
+					</div>
+					<div class="col-sm-10">
+						<h2 class="modal-title"><b>{{hotspot.name}}</b></h2>
+						<span class="label label-default">{{hotspot.get_category_display}}</span>
+					</div>
+					{% else %}
+					<div class="col text-center">
+						<h2 class="modal-title"><b>{{hotspot.name}}</b></h2>
+						<span class="label label-default">{{hotspot.get_category_display}}</span>
+					</div>
+					{% endif %}
+				</div>
+				<div class="row">
+					<div class="col-sm-4 text-center" style="padding: 5px;">
+						<b>Score: {{hotspot.score}}</b>
+					</div>
+					<div class="col-sm-4 text-center" style="padding: 5px;">
+						<b>{{hotspot.geo_lat}}, {{hotspot.geo_long}}</b>
+					</div>
+					<div class="col-sm-4 text-center" style="padding: 5px;">
+						<!--<b>Plausibility: {{hotspot.plausibility}}</b>-->
+					</div>
+				</div>
+				<div class="row">
+					<div class="col text-center" style="padding: 5px;">
+						{% if hotspot.country %} {{hotspot.country}} {% endif %}
+						{% if hotspot.city %} {{hotspot.city}} {% endif %},
+						{% if hotspot.zip %} {{hotspot.zip}} {% endif %}
+						{% if hotspot.street %} {{hotspot.street}} {% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="modal-body">
+				{% if hotspot.desc %}
+				<div class="row">
+					<div class="col text-center" style="padding: 5px;">
+						<p>{{hotspot.desc}}</p>
+					</div>
+				</div>
+				{% endif %}
+				<div class="row">
+					<div class="col text-center" style="padding: 5px;">
+						<div class="btn-group">
+							{% if hotspot.phone %}
+							<button class='btn btn-primary' onclick="window.open('tel:{{hotspot.phone}}','_blank');">Phone</button>
+							{% endif %}
+							{% if hotspot.url %}
+							<button class='btn btn-primary' onclick="redirect_safe('{{hotspot.url}}');">Homepage</button>
+							{% endif %}
+							{% if hotspot.url_fb %}
+							<button class='btn btn-primary' onclick="window.location.href='{{hotspot.url_fb}}';">Facebook</button>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<script>
+
+
+</script>

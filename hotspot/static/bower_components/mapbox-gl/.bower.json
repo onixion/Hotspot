@@ -1,0 +1,50 @@
+{
+  "name": "mapbox-gl",
+  "description": "Polymer 2.0 custom element for mapbox-gl-js. mapbox-gl element uses WebGL to render interactive maps from vector tiles and Mapbox styles. mapbox-gl element is compatible with deck-gl, the Polymer 1.0 element for uber's deck.gl library.",
+  "main": [
+    "mapbox-gl.html",
+    "mapbox-gl-marker.html",
+    "mapbox-layer.html",
+    "mapbox-building-layer.html",
+    "mapbox-heatmap-layer.html",
+    "geojson-source.html"
+  ],
+  "keywords": [
+    "polymer",
+    "web-components",
+    "deck.gl",
+    "mapboxgl",
+    "webgl",
+    "visualization",
+    "geospatial",
+    "map"
+  ],
+  "authors": [
+    "eterna2 <eterna2@hotmail.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.0.0",
+    "shadycss": "^1.0.5"
+  },
+  "devDependencies": {
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",
+    "web-component-tester": "Polymer/web-component-tester#^6.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
+  },
+  "resolutions": {
+    "polymer": "^2.0.0"
+  },
+  "homepage": "https://github.com/PolymerVis/mapbox-gl",
+  "version": "2.0.5",
+  "_release": "2.0.5",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.0.5",
+    "commit": "51aaeb9264a665b8060efb066873c390cc387ddf"
+  },
+  "_source": "https://github.com/PolymerVis/mapbox-gl.git",
+  "_target": "^2.0.5",
+  "_originalSource": "mapbox-gl",
+  "_direct": true
+}

@@ -1,0 +1,140 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="./layer-behavior.html">
+
+<!--
+A generic mapbox layer.
+
+<b>Example 1</b>
+```html
+<mapbox-gl id="map"
+  interactive
+  map="{{map}}"
+  map-style="mapbox://styles/mapbox/dark-v9"
+  access-token="<MAPBOX_ACCESS_TOKEN>"
+  latitude=1.3521
+  longitude=103.8698
+  zoom=2></mapbox-gl>
+
+<mapbox-layer
+  map="[[map]]"
+  layer-id="coastline_fill"
+  rendering-type="fill"
+  source="geojsonsrc"
+  color="#009688"
+  opacity=0.7></mapbox-layer>
+
+<mapbox-layer
+  map="[[map]]"
+  layer-id="coastline_outline"
+  rendering-type="line"
+  source="geojsonsrc"
+  color="#eee"
+  line-width=2></mapbox-layer>
+
+<geojson-source
+  map="[[map]]"
+  source-id="geojsonsrc"
+  source-data="https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_110m_land.geojson"></geojson-source>
+```
+
+<b>Example 2</b>
+```html
+<mapbox-gl id="map"
+  interactive
+  map="{{map}}"
+  map-style="mapbox://styles/mapbox/dark-v9"
+  access-token="<MAPBOX_ACCESS_TOKEN>"
+  latitude=1.3521
+  longitude=103.8698
+  zoom=2></mapbox-gl>
+
+<mapbox-layer
+  map="[[map]]"
+  layer-id="layer_points"
+  rendering-type="circle"
+  source-data="[[geojson]]"
+  color="#009688"
+  opacity=0.7></mapbox-layer>
+
+```
+
+Sample of input for `source-data` for `mapbox-layer`
+```javascript
+{
+  "type": "geojson",
+  "data": {
+      "type": "FeatureCollection",
+      "features": [{
+          "type": "Feature",
+          "geometry": {
+              "type": "Point",
+              "coordinates": [-77.03238901390978, 38.913188059745586]
+          },
+          "properties": {
+              "title": "Mapbox DC",
+              "icon": "monument"
+          }
+      }, {
+          "type": "Feature",
+          "geometry": {
+              "type": "Point",
+              "coordinates": [-122.414, 37.776]
+          },
+          "properties": {
+              "title": "Mapbox SF",
+              "icon": "harbor"
+          }
+      }]
+  }
+```javascript
+
+@customElement
+@polymer
+@demo demo/index.html Basic demo
+-->
+
+<dom-module id="mapbox-layer">
+  <script>
+  class MapboxLayer extends Polymer.mixinBehaviors(
+  [MapboxGLPolymer.LayerBehavior],
+  Polymer.Element
+) {
+  static get is() {
+    return 'mapbox-layer';
+  }
+
+  static get observers() {
+    return ['_mapReady(map, _layer.source)'];
+  }
+
+  _mapReady(map) {
+    if (!map || !this._layer.source) return;
+
+    if (map.loaded()) return this._sourceReady();
+
+    map.on('load', this._sourceReady.bind(this));
+  }
+
+  _addLayer() {
+    if (this._added) return;
+    this.map.addLayer(this._layer);
+    this._added = true;
+    this.dispatchEvent(new CustomEvent('layer-added', {detail: this.map}));
+  }
+
+  _sourceReady() {
+    var source = this._layer.source;
+    // load after source is ready
+    if (typeof source === 'string' && !this.map.getSource(source)) {
+      return this.map.on(
+        'sourcedata',
+        () => this.map.getSource(source) && this._addLayer()
+      );
+    }
+    return this._addLayer();
+  }
+}
+
+window.customElements.define(MapboxLayer.is, MapboxLayer);
+</script>
+</dom-module>

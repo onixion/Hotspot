@@ -1,0 +1,10 @@
+[Unit]
+Description=Gunicorn daemon for hotspot
+
+[Service]
+Type=simple
+User=gunicorn
+ExecStart=/srv/http/hotspot/gunicorn.sh
+
+[Install]
+WantedBy=multi-user.target

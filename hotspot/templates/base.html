@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<title>Hotspot</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="/static/bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="/static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/static/bower_components/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/static/ressources/style.css">
+	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.41.0/mapbox-gl.js'></script>
+	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.41.0/mapbox-gl.css' rel='stylesheet' />
+	<link href='/static/ressources/spinner.css' rel='stylesheet' />
+	<script src='/static/ressources/spinner.js'></script>
+	<script src='/static/ressources/hotspot_api.js'></script>
+	<script src='/static/ressources/details.js'></script>
+	<script src='/static/ressources/filter.js'></script>
+</head>
+
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<input type="image" src="/static/ressources/filter-symbol.png" id="menu-toggle" class="button-filter"/>
+				<h1 class="navbar-heading">Hotspot</h1>
+			</div>
+		</div>
+	</nav>
+
+	<div id="wrapper" class="toggled">
+		<div class="container-fluid">
+			<!-- Sidebar -->
+			<div id="sidebar-wrapper">
+				<ul class="sidebar-nav">
+					<li class="sidebar-brand">
+						<br>
+					</li>
+					<li class="sidebar-brand">
+						<span class="glyphicon 	glyphicon glyphicon-map-marker" aria-hidden="true"></span> Filter
+					</li>
+					<li>
+						<a id="filter-all" href="#">
+							<span class="label label-default all-bg" style="border-radius:15px;">&nbsp;</span>&nbsp;
+							All
+						</a>
+					</li>
+					<li>
+						<a id="filter-food" href="#">
+							<span class="label label-default food-bg" style="border-radius:15px;">&nbsp;</span>&nbsp;
+							Food & Restaurants
+						</a>
+					</li>
+					<li>
+						<a id="filter-hotels" href="#">
+							<span class="label label-default hotel-bg" style="border-radius:15px;">&nbsp;</span>&nbsp;
+							Hotels
+						</a>
+					</li>
+					<li>
+						<a id="filter-entertainment" href="#">
+							<span class="label label-default entertainment-bg" style="border-radius:15px;">&nbsp;</span>&nbsp;
+							Entertainment & Arts
+						</a>
+					</li>
+					<li>
+						<a id="filter-shops" href="#">
+							<span class="label label-default shop-bg" style="border-radius:15px;">&nbsp;</span>&nbsp;
+							Shops
+						</a>
+					</li>
+					<li>
+						<a id="filter-travel" href="#">
+							<span class="label label-default travel-bg" style="border-radius:15px;">&nbsp;</span>&nbsp;
+							Travel
+						</a>
+					</li>
+					<hr width="90%">
+					<li>
+						<button type="button" class="btn btn-danger btn-square center-block" data-toggle="modal" data-target="#hotspot-list-modal">Show Hotspot List</button>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<script>
+			$("#menu-toggle").click(function(e) {
+				e.preventDefault();
+				$("#wrapper").toggleClass("toggled");
+			});
+		</script>
+
+	</div>
+
+	<div id="map"></div>
+	<script src='/static/ressources/map.js'></script>
+
+	<!-- Modal -->
+	<div class="modal fade" id="hotspot-list-modal" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Hotspot List</h4>
+				</div>
+
+				<div class="modal-body">
+					<table class="table table-striped" id="hotspot-list-table"></table>
+				</div>
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+			<script src='/static/ressources/hotspot_list_modal.js'></script>
+		</div>
+	</div>
+
+</body>
+</html>
